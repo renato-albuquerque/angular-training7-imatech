@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { Pessoa } from './Pessoa';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,19 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'aula7';
+  
+  // Variável de texto
+  texto: string = 'Aprendendo a trabalhar com o Jasmine e o Karma';
+
+  // Função para retornar a soma
+  soma(n1: number, n2: number): number {
+    return n1+n2
+  };
+
+  // Função para retornar um objeto do tipo Pessoa
+  retornarPessoa(obj:Pessoa):Pessoa {
+    return obj;
+  }
+
+
 }

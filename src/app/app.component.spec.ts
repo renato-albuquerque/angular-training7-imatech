@@ -1,29 +1,69 @@
+// Importações
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { Pessoa } from './Pessoa';
 
+
+// Descrição do teste uitário
 describe('AppComponent', () => {
+
+  // O teste unitário será feito aqui!
+  // Inicialização
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [AppComponent]
     }).compileComponents();
   });
 
-  it('should create the app', () => {
+  // Validar a variável texto
+  it('Validar variável de texto', () => {
+
+    // Fixture
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+
+    // Obter as variáveis e funções do componente
+    const componente = fixture.componentInstance;
+
+    // Validação
+    expect(componente.texto).toEqual('Aprendendo a trabalhar com o Jasmine e o Karma');
   });
 
-  it(`should have the 'aula7' title`, () => {
+  // Validar a função soma
+  it('Validar função soma', () => {
+    
+    // Fixture
     const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('aula7');
-  });
 
-  it('should render title', () => {
+    // Obter as variáveis e funções do componente
+    const componente = fixture.componentInstance;
+
+    // Executar a função e obter o retorno
+    let retorno = componente.soma(5, 6);
+
+    // Validação
+    expect(typeof retorno).toBe('number');
+  })
+
+  // Validar o retorno da função retornarPessoa
+  it('Função retornar pessoa', () => {
+
+    // Fixture
     const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, aula7');
-  });
-});
+
+    // Obter as variáveis e funções do componente
+    const componente = fixture.componentInstance;
+
+    // Criar um objeto do tipo Pessoa
+    const obj = new Pessoa('Ralf', 33);
+
+    // Executar função
+    const retorno = componente.retornarPessoa(obj);
+
+    // Validar
+    expect(retorno instanceof Pessoa).toBeTrue();
+  })
+
+
+
+
+} )
